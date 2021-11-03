@@ -2,6 +2,7 @@ package com.example.mybdfordiplom.entity;
 
 
 
+import com.example.mybdfordiplom.address.Address;
 import com.example.mybdfordiplom.order.DataOrder;
 
 import javax.persistence.*;
@@ -20,7 +21,10 @@ public class Costumer {
     private String phoneNumber;
     @Column (name = "Email", nullable = false)
     private String email;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "Address_id", referencedColumnName = "id", nullable = false)
+    private Address address;
 
-    @OneToMany (mappedBy = "costumer", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToMany (mappedBy = "costumer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DataOrder> order;
 }

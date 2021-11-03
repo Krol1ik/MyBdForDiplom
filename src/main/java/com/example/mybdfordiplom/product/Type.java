@@ -10,9 +10,9 @@ public class Type {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column (name = "Type_name")
+    @Column (name = "Type_name", nullable = false)
     private String typeName;
 
-    @OneToMany (mappedBy = "type", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToMany (mappedBy = "type", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;
 }

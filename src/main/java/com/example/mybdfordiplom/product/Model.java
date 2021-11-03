@@ -10,9 +10,9 @@ public class Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column (name = "Model_name")
+    @Column (name = "Model_name", nullable = false)
     private String modelName;
 
-    @OneToMany(mappedBy = "model", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToMany(mappedBy = "model", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;
 }

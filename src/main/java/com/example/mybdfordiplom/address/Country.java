@@ -10,10 +10,10 @@ public class Country {
     private int id;
     @Column (name = "Country_name", nullable = false)
     private String countryName;
-    @OneToOne(cascade = CascadeType.MERGE, orphanRemoval = true)
-    @JoinColumn(name = "country", referencedColumnName = "id", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "Address_id", referencedColumnName = "id", nullable = false)
     private Address address;
 
-    @OneToMany (mappedBy = "country", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToMany (mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<City> city;
 }

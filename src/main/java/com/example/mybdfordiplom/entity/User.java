@@ -1,7 +1,9 @@
 package com.example.mybdfordiplom.entity;
 
 import com.example.mybdfordiplom.address.Address;
+import com.example.mybdfordiplom.address.City;
 import com.example.mybdfordiplom.order.DataOrder;
+import com.example.mybdfordiplom.order.OrderItem;
 
 
 import javax.persistence.*;
@@ -26,12 +28,15 @@ public class User {
     private String login;
     @Column (name = "Password", nullable = false)
     private String password;
-    @OneToOne(cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "Role_id", referencedColumnName = "id", nullable = false)
     private RoleUser roleUser;
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Address address;
 
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "Address_id", referencedColumnName = "id", nullable = false)
+    private Address address;
+    @OneToMany (mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItems;
     @OneToMany (mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DataOrder> order;
 }

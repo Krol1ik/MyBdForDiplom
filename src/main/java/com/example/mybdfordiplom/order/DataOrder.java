@@ -4,6 +4,7 @@ import com.example.mybdfordiplom.entity.Costumer;
 import com.example.mybdfordiplom.entity.User;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -21,8 +22,8 @@ public class DataOrder {
     @JoinColumn (name = "Costumer_id")
     private Costumer costumer;
 
-//    @OneToMany (mappedBy = "dataOrders", cascade = CascadeType.MERGE, orphanRemoval = true)
-//    private List<OrderItem> orderItem;
+    @OneToMany (mappedBy = "dataOrders", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItem;
 
     public DataOrder() {
     }

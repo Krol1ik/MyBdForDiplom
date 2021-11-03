@@ -12,7 +12,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column (name = "Article")
+    @Column (name = "Article", nullable = false)
     private int article;
 
     @ManyToOne (fetch = FetchType.LAZY)
@@ -35,10 +35,10 @@ public class Product {
     @Column (name = "Discount")
     private int discount;
 
-    @OneToOne (mappedBy = "product", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToOne (mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private StockBalance stockBalance;
 
-    @OneToMany (mappedBy = "productOrder", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToMany (mappedBy = "productOrder", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItem;
 
 }

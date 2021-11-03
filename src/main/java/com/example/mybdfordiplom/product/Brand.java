@@ -10,9 +10,9 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column (name = "Brand_name")
+    @Column (name = "Brand_name", nullable = false)
     private String brandName;
 
-    @OneToMany(mappedBy = "brand", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;
 }
